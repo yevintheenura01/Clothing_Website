@@ -3,11 +3,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+const RegRoute = require("./Routes/RegRoute");
+const QuestionsRoute = require("./Routes/QuestionsRoute");
+const LoginRoute = require("./Routes/LoginRoute");
+
 const app = express();
 
 
 //middleware
 app.use(express.json());
+
+app.use("/reg",RegRoute);
+app.use("/questions",QuestionsRoute);
+app.use("/login", LoginRoute);
 
 
 mongoose
