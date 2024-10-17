@@ -55,6 +55,12 @@ const Hero = () => {
                         className='w-[640px] h-[326px] sm:h-[350px] sm:scale-125object-contain mx-auto'/>
                         </div>
                     </div>
+
+                    <div>
+                            <button className="bg-gradient-to-r from-primary to -secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full">
+                                Click now
+                            </button>
+                        </div>
                 </div>
             </div>
         </div>
