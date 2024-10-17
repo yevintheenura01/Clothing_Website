@@ -36,8 +36,6 @@ import Hero from "./components/Hero/Hero";
 
 
 
-
-
 {/* Yevin */}
 
 
@@ -158,7 +156,7 @@ const App = () => {
 
 
 
-      
+
     </div>
   )
 }
