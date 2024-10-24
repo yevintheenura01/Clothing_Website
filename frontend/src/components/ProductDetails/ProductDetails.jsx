@@ -42,6 +42,37 @@ const ProductDetails = () => {
     }
   };
 
+  // Function to handle the Buy Now button click
+  const handleBuyNow = async () => {
+    if (!selectedSize) {
+      alert('Please select a size before buying.'); // Ensure size is selected
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/cart', {
+        _id: item._id,
+        title: item?.title,
+        price: item?.price,
+        description: item?.description,
+        selectedImage,
+        selectedSize,
+        quantity,
+      });
+
+      // You can handle the response here if needed
+      console.log('Item purchased:', response.data);
+
+      // Navigate to the cart with the purchased item data
+      navigate('/cart', {
+        state: { item: response.data }, // Pass the purchased item details to Cart
+      });
+    } catch (error) {
+      console.error('Error purchasing item:', error);
+      // Optionally show an error message to the user
+    }
+  };
+
   // Function to handle quantity change
   const increaseQuantity = () => setQuantity((prevQuantity) => prevQuantity + 1);
   const decreaseQuantity = () => {
@@ -126,12 +157,20 @@ const ProductDetails = () => {
             </div>
           </div>
 
-          {/* Add Button */}
+          {/* Add to Cart Button */}
           <button
-            className="bg-black text-white py-3 px-6 text-lg"
+            className="bg-black text-white py-3 px-6 text-lg mb-2"
             onClick={handleAddToCart}
           >
             ADD TO CART
+          </button>
+
+          {/* Buy Now Button */}
+          <button
+            className="bg-white text-black border border-black py-3 px-6 text-lg"
+            onClick={handleBuyNow}
+          >
+            BUY NOW
           </button>
         </div>
       </div>

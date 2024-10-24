@@ -24,24 +24,42 @@ const Trend = ({ favorites, setFavorites }) => {
     }, []);
 
     const handleFavorite = async (item) => {
-        const isFavorited = favorites.some(fav => fav.productId === item.id); 
+        const isFavorited = favorites.some(fav => fav.productId === item.id);
 
         if (!isFavorited) {
+            // If not favorited, add to favorites
             try {
                 await axios.post('http://localhost:5000/favorites', {
-                    userId: 'user-id', // Replace with actual user ID
+                    userId: 'user-id', // Replace with actual user ID if necessary
                     productId: item.id,
                     title: item.title,
-                    img: item.trendImage,
-                    price: item.price
+                    price: item.price,
+                    selectedImage: item.trendImage,
+                    description: item.description
                 });
-                setFavorites((prevFavorites) => [...prevFavorites, item]);
-                navigate('/Favourite');
+
+                setFavorites((prevFavorites) => [...prevFavorites, {
+                    productId: item.id,
+                    title: item.title,
+                    price: item.price,
+                    selectedImage: item.trendImage,
+                    description: item.description
+                }]);
             } catch (error) {
                 console.error('Error adding favorite:', error);
             }
         } else {
-            console.log('Already in favorites');
+            // If already favorited, remove from favorites and navigate to favorites page
+            try {
+                await axios.delete(`http://localhost:5000/favorites/${item.id}`); // Adjust the API endpoint to your delete route
+                
+                setFavorites((prevFavorites) => prevFavorites.filter(fav => fav.productId !== item.id));
+
+                // Navigate to the favorites page
+                navigate('/Favourite'); // Adjust route based on your routing setup
+            } catch (error) {
+                console.error('Error removing favorite:', error);
+            }
         }
     };
 
@@ -70,7 +88,7 @@ const Trend = ({ favorites, setFavorites }) => {
                             >
                                 <div className="overflow-hidden">
                                     <img
-                                        src={`http://localhost:5000/uploads/${item.trendImage}`} // Ensure a leading slash
+                                        src={`http://localhost:5000/uploads/${item.trendImage}`}
                                         alt={item.title}
                                         className="max-w-full h-auto block mx-auto group-hover:scale-110 transition duration-500"
                                     />
@@ -81,8 +99,9 @@ const Trend = ({ favorites, setFavorites }) => {
                                             {[...Array(4)].map((_, index) => <FaStar key={index} className="text-yellow-500" />)}
                                         </div>
                                         <FaHeart
-                                            className={`cursor-pointer ${favorites.some(fav => fav.productId === item.id) ? 'text-red-500' : 'text-gray-400'}`}
-                                            onClick={() => handleFavorite(item)}
+                                            className={`cursor-pointer ${favorites.some(fav => fav.productId === item.id) ? 'text-rose-500' : 'text-gray-400'}`} // Change color to rose if favorited
+                                            onDoubleClick={() => handleFavorite(item)} // Handle double-click to remove and navigate
+                                            onClick={() => handleFavorite(item)} // Handle single click to add/remove
                                         />
                                     </div>
                                     <h3 className="text-xl font-bold">{item.title}</h3>
