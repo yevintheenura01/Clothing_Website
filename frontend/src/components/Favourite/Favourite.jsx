@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import { FaTimes, FaHeartBroken } from 'react-icons/fa';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { FaTrashAlt } from 'react-icons/fa'; // Import an icon for removing favorites
 
-const Favourite = ({ userId, favorites, setFavorites }) => {
+const Favorite = () => {
+    const [favorites, setFavorites] = useState([]);
+    const userId = 'user-id'; // Replace with actual user ID if necessary
+
     useEffect(() => {
         const fetchFavorites = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/favorites/${userId}`);
+                const response = await axios.get(`http://localhost:5000/favorites?userId=${userId}`); // Fetch favorites for the specific user
                 setFavorites(response.data);
             } catch (error) {
                 console.error('Error fetching favorites:', error);
@@ -15,63 +17,49 @@ const Favourite = ({ userId, favorites, setFavorites }) => {
         };
 
         fetchFavorites();
-    }, [userId, setFavorites]);
+    }, []);
 
-    const handleRemoveFavorite = async (productId) => {
+    const handleRemoveFavorite = async (itemId) => {
         try {
-            await axios.delete(`http://localhost:5000/favorites/${productId}`);
-            const updatedFavorites = favorites.filter((product) => product.productId !== productId);
-            setFavorites(updatedFavorites);
-            toast.success('Product removed from favorites!');
+            await axios.delete(`http://localhost:5000/favorites/${itemId}`); // Adjust endpoint as necessary
+            setFavorites((prevFavorites) => prevFavorites.filter((item) => item._id !== itemId)); // Update local state
         } catch (error) {
             console.error('Error removing favorite:', error);
         }
     };
 
-    const handleImageError = (e) => {
-        e.target.src = 'https://via.placeholder.com/150'; // Replace with a fallback image URL
-    };
-
     return (
-        <div className="container mx-auto text-center">
-            <h1 className="text-3xl font-bold mt-10">Favourite Products</h1>
-            {favorites.length === 0 ? (
-                <div className="mt-10">
-                    <FaHeartBroken size={64} className="text-gray-400 mx-auto" />
-                    <p className="text-gray-600 mt-4">No favorite products yet.</p>
-                </div>
-            ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
-                    {favorites.map((product) => (
-                        <div key={product.productId} className="space-y-3">
-                            <div className="relative">
+        <div className="bg-gray-50 py-10">
+            <div className="container mx-auto py-12 px-4">
+                <h2 className="text-4xl font-bold mb-8 text-center text-primary">Your Favorites</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                    {favorites.length > 0 ? (
+                        favorites.map((item) => (
+                            <div key={item._id} className="bg-white shadow-lg rounded-lg p-4 transition-transform duration-300 hover:scale-105">
                                 <img
-                                    src={product.img}
-                                    alt={product.title || 'Product image'}
-                                    className="h-[220px] w-[150px] object-cover rounded-md"
-                                    onError={handleImageError}
+                                    src={`http://localhost:5000/uploads/${item.selectedImage}`} // Ensure the image path is correct
+                                    alt={item.title}
+                                    className="w-full h-auto mb-4 rounded-t-lg"
                                 />
-                                <button
-                                    onClick={() => handleRemoveFavorite(product.productId)}
-                                    className="absolute top-2 right-2 text-white bg-red-500 rounded-full p-1 hover:bg-red-600"
-                                    aria-label="Remove from Favorites"
+                                <h3 className="text-xl font-bold text-center">{item.title}</h3>
+                                <p className="text-gray-500 text-center mb-2">{item.description}</p>
+                                <p className="text-lg font-semibold text-center mb-4">{item.price}</p>
+                                <button 
+                                    onClick={() => handleRemoveFavorite(item._id)}
+                                    className="flex items-center justify-center bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 w-full"
                                 >
-                                    <FaTimes size={14} />
+                                    <FaTrashAlt className="mr-2" />
+                                    Remove
                                 </button>
                             </div>
-                            <div>
-                                <h3 className="font-semibold">{product.title || 'Unknown Product'}</h3>
-                                <p className="text-sm text-gray-600">{product.color || 'No color specified'}</p>
-                                <div className="flex items-center gap-1">
-                                    <span>{product.rating ? `${product.rating} ⭐` : 'No rating'}</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                        ))
+                    ) : (
+                        <p className="text-center text-gray-500">No favorites found.</p>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
     );
 };
 
-export default Favourite;
+export default Favorite;

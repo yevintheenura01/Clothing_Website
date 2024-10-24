@@ -25,22 +25,111 @@ module.exports = [
     price: 49.99,
     color: "Blue",
     size: "32",
-    img: "/uploads/denim-jeans.jpg",  // Make sure the image exists in the 'Uploads' folder
+    img: "/blackdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
     additionalImages: [
-      "/uploads/dress02.webp",
-      "/uploads/dress02.webp",
-      "/uploads/dress02.webp"
+      "/blackdress02.jpg",
+      "/blackdress03.jpg",
+      "/blackdress04.jpg",
+      "/blackdress05.jpg",
+      "/blackdress06.jpg",
+      "/blackdress07.jpg",
+      "/blackdress08.jpg",
     ],
     trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
   },
   {
     id: 3,
-    title: "Stylish Jacket",
-    description: "A warm jacket for cool evenings.",
-    price: 79.99,
-    color: "Black",
-    size: "L",
-    img: "/uploads/stylish-jacket.jpg",  // Make sure the image exists in the 'Uploads' folder
-    trendImage: "/uploads/trend-stylish-jacket.jpg" // Add the trend image path
-  }
+    title: "Denim Jeans",
+    description: "Classic blue denim jeans with a comfortable fit.",
+    price: 49.99,
+    color: "Blue",
+    size: "32",
+    img: "/bluedress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    additionalImages: [
+      "/bluedress02.jpg",
+      "/bluedress03.jpg",
+      "/bluedress04.jpg",
+      "/bluedress05.jpg",
+      "/bluedress06.jpg",
+      "/bluedress07.jpg",
+      "/bluedress08.jpg",
+    ],
+    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+  },
+  {
+    id: 4,
+    title: "Denim Jeans",
+    description: "Classic blue denim jeans with a comfortable fit.",
+    price: 49.99,
+    color: "Blue",
+    size: "32",
+    img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    additionalImages: [
+      "/shortdress02.jpg",
+      "/shortdress03.jpg",
+      "/shortdress04.jpg",
+      "/shortdress05.jpg",
+      "/shortdress06.jpg",
+      "/shortdress07.jpg",
+      "/shortdress08.jpg",
+    ],
+    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+  },
+  {
+    id: 5,
+    title: "Denim Jeans",
+    description: "Classic blue denim jeans with a comfortable fit.",
+    price: 49.99,
+    color: "Blue",
+    size: "32",
+    img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    additionalImages: [
+      "/shortdress02.jpg",
+      "/shortdress03.jpg",
+      "/shortdress04.jpg",
+      "/shortdress05.jpg",
+      "/shortdress06.jpg",
+      "/shortdress07.jpg",
+      "/shortdress08.jpg",
+    ],
+    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+  },
+  {
+    id: 6,
+    title: "Denim Jeans",
+    description: "Classic blue denim jeans with a comfortable fit.",
+    price: 49.99,
+    color: "Blue",
+    size: "32",
+    img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    additionalImages: [
+      "/shortdress02.jpg",
+      "/shortdress03.jpg",
+      "/shortdress04.jpg",
+      "/shortdress05.jpg",
+      "/shortdress06.jpg",
+      "/shortdress07.jpg",
+      "/shortdress08.jpg",
+    ],
+    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+  },
+  {
+    id: 7,
+    title: "Denim Jeans",
+    description: "Classic blue denim jeans with a comfortable fit.",
+    price: 49.99,
+    color: "Blue",
+    size: "32",
+    img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    additionalImages: [
+      "/shortdress02.jpg",
+      "/shortdress03.jpg",
+      "/shortdress04.jpg",
+      "/shortdress05.jpg",
+      "/shortdress06.jpg",
+      "/shortdress07.jpg",
+      "/shortdress08.jpg",
+    ],
+    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+  },
 ];
