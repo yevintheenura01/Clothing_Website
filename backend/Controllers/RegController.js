@@ -29,7 +29,8 @@ const registerUser = async (req, res) => {
         // Respond with success and user details
         res.status(200).json({
             message: "User registered successfully",
-            user: savedUser
+            user: savedUser,
+            userID: newUser.userID
         });
     } catch (err) {
         console.error(err);
@@ -37,4 +38,65 @@ const registerUser = async (req, res) => {
     }
 };
 
+// Get user profile data
+const getUserProfile = async (req, res) => {
+    try {
+        const { userID } = req.params;
+        const user = await Register.findOne({ userID });
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        res.status(200).json({
+            name: user.name,
+            email: user.email,
+            profilePicture: user.profilePicture,
+            questions: user.questions
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
+// Update user profile
+const updateUserProfile = async (req, res) => {
+    try {
+        const { userID } = req.params;
+        const { name, password } = req.body;
+        
+        // Handle the uploaded profile picture
+        const profilePicture = req.file ? req.file.filename : null;
+
+        const user = await Register.findOne({ userID });
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        if (name) user.name = name;
+        if (password) user.password = await bcrypt.hash(password, 10);
+        if (profilePicture) user.profilePicture = profilePicture;
+
+        await user.save();
+        res.status(200).json({ message: "Profile updated successfully", user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
+// Delete user profile
+const deleteUserProfile = async (req, res) => {
+    try {
+        const { userID } = req.params;
+        const user = await Register.findOneAndDelete({ userID });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({ message: "User deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
 exports.registerUser = registerUser;
+exports.getUserProfile = getUserProfile;
+exports.updateUserProfile = updateUserProfile;
+exports.deleteUserProfile = deleteUserProfile;

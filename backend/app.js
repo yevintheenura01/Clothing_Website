@@ -12,14 +12,24 @@ const CartRoute = require("./Routes/CartRoute"); // Ensure this is correct
 const ProductRoute = require("./Routes/ProductRoutes");
 const itemRoutes = require("./Routes/itemRoutes");
 const favoriteRoutes = require("./Routes/favorites");
+const ForgotPasswordRoute = require("./Routes/ForgotPasswordRoute");
+
+
 
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 
 
 
 
 // Middleware
 app.use(express.json());
+app.use(cors());
+app.use('/uploads', express.static('uploads'));
+
+
+
 app.use(cors());
 
 
