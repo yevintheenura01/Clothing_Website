@@ -1,29 +1,4 @@
 import React from 'react'
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer/Footer";
-import Hero from "./components/Hero/Hero";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -48,38 +23,16 @@ import Hero from "./components/Hero/Hero";
 
 
 //yevin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/Login/Login';  
+import Register from './components/Register/Register';
+import Questions from './components/Register/OnePageForm';
+import Q1 from './components/Register/Q1';
+import UserProfile from './components/Profile/UserProfile';
+import QuestionsDisplay from './components/Profile/QuestionsPage';
+import Card from './components/Card/Card';
+import ForgotPassword from './components/ForgotPwd/ForgotPassword';
+import ResetPassword from './components/ForgotPwd/ResetPassword';
 
 
 
@@ -90,98 +43,72 @@ import Hero from "./components/Hero/Hero";
 
 
 const App = () => {
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   return (
+    
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  
+  
+  
+  
+  
+  <Router>
     <div>
-
-
-
-      <Navbar/>
-      <Hero/>
-      <Footer/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     {/*yevin */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <Routes>
+    <Route path="/register" element={<Register />} />
+    <Route path="/login" element={<Login />} />      
+    <Route path='/questions' element={<Questions/>}/>
+    <Route path ='/q1' element={<Q1/>}/>
+    <Route path='/uProfile' element={<UserProfile/>}/>
+    <Route path='/qDisplay' element={<QuestionsDisplay/>}/>
+    <Route path='/card' element={<Card/>}/>
+    <Route path='/forgot-password' element={<ForgotPassword/>}/>  
+    <Route path="/reset-password/:token" element={<ResetPassword />} />
 
 
 
     
+    </Routes>
 
 
-    </div>
+     </div>
+    </Router>
   )
 }
 
