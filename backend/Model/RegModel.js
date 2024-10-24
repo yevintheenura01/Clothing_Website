@@ -22,6 +22,10 @@ const RegSchema = new Schema({
     policy: {
         type: Boolean,
         default: true,
+    },
+    profilePicture:{
+        type: String,
+        unique:"true"
     }
 });
 
