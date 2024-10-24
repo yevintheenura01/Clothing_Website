@@ -99,65 +99,70 @@ const Cart = () => {
         {cartItems.length === 0 ? (
           <p className="text-lg text-gray-600">Your cart is empty.</p>
         ) : (
-          <>
-            <table className="min-w-full bg-white border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="py-2 px-4 border-b">Item</th>
-                  <th className="py-2 px-4 border-b">Price (RS)</th>
-                  <th className="py-2 px-4 border-b">Quantity</th>
-                  <th className="py-2 px-4 border-b">Total (RS)</th>
-                  <th className="py-2 px-4 border-b">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cartItems.map((item, index) => (
-                  <tr key={index} className="text-center">
-                    <td className="py-4 px-4 border-b">
-                      <img
-                        src={`http://localhost:5000/uploads/${item.selectedImage}`}
-                        alt={item.title}
-                        className="w-20 h-20 rounded-lg object-cover"
-                      />
-                      <div className="mt-2">{item.title}</div>
-                    </td>
-                    <td className="py-4 px-4 border-b">{item.price} RS</td>
-                    <td className="py-4 px-4 border-b">
-                      <div className="flex items-center justify-center">
-                        <button
-                          className="bg-gray-300 px-2 py-1 rounded-lg"
-                          onClick={() => decreaseQuantity(index)}
-                          disabled={item.quantity <= 1}
-                        >
-                          -
-                        </button>
-                        <span className="mx-2">{item.quantity}</span>
-                        <button
-                          className="bg-gray-300 px-2 py-1 rounded-lg"
-                          onClick={() => increaseQuantity(index)}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </td>
-                    <td className="py-4 px-4 border-b">{item.price * item.quantity} RS</td>
-                    <td className="py-4 px-4 border-b">
-                      <button
-                        className={`bg-white text-black border border-black px-4 py-2 rounded-full transition-all duration-300 
-                          ${clickedIndex === index ? 'bg-black text-white' : 'hover:bg-primary hover:text-white'}`}
-                        onClick={() => removeItem(index)}
-                      >
-                        Remove
-                      </button>
-                    </td>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-lg shadow-md p-4">
+              <table className="min-w-full bg-white border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="py-2 px-4 border-b">Item</th>
+                    <th className="py-2 px-4 border-b">Price (RS)</th>
+                    <th className="py-2 px-4 border-b">Quantity</th>
+                    <th className="py-2 px-4 border-b">Total (RS)</th>
+                    <th className="py-2 px-4 border-b">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="flex justify-between mt-4">
-              <h2 className="text-2xl font-bold">Total Price: {totalPrice} RS</h2>
+                </thead>
+                <tbody>
+                  {cartItems.map((item, index) => (
+                    <tr key={index} className="text-center">
+                      <td className="py-4 px-4 border-b">
+                        <img
+                          src={`http://localhost:5000/uploads/${item.selectedImage}`}
+                          alt={item.title}
+                          className="w-20 h-20 rounded-lg object-cover"
+                        />
+                        <div className="mt-2">{item.title}</div>
+                      </td>
+                      <td className="py-4 px-4 border-b">{item.price} RS</td>
+                      <td className="py-4 px-4 border-b">
+                        <div className="flex items-center justify-center">
+                          <button
+                            className="bg-gray-300 px-2 py-1 rounded-lg"
+                            onClick={() => decreaseQuantity(index)}
+                            disabled={item.quantity <= 1}
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{item.quantity}</span>
+                          <button
+                            className="bg-gray-300 px-2 py-1 rounded-lg"
+                            onClick={() => increaseQuantity(index)}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 border-b">{item.price * item.quantity} RS</td>
+                      <td className="py-4 px-4 border-b">
+                        <button
+                          className={`bg-white text-black border border-black px-4 py-2 rounded-full transition-all duration-300 
+                            ${clickedIndex === index ? 'bg-black text-white' : 'hover:bg-primary hover:text-white'}`}
+                          onClick={() => removeItem(index)}
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          </>
+            <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between">
+              <h2 className="text-2xl font-bold mb-4">Total Price: {totalPrice} RS</h2>
+              <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition duration-300 self-end">
+                Checkout
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>
