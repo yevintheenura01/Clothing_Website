@@ -47,7 +47,7 @@ export default function Navbar() {
                 <img src={CartIcon} alt="Shopping Cart" className='w-[20px] h-[20px]' />
               </Link>
               {/* Favorites Icon */}
-              <Link to="/favourite" className='hover:text-gray-400' aria-label="Favorites">
+              <Link to="/api/favorite" className='hover:text-gray-400' aria-label="Favorites">
                 <img src={HeartIcon} alt="Favorites" className='w-[20px] h-[20px]' />
               </Link>
               {/* Profile Icon */}
