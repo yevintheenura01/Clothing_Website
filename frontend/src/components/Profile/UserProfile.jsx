@@ -289,7 +289,7 @@ const UserProfile = () => {
         {userData.profilePicture && (
           <div className="flex justify-center mb-2">
             <img
-              src={`http://localhost:5000/uploads/${userData.profilePicture}`}
+              src={`http://localhost:5000/upload/${userData.profilePicture}`}
               alt="Profile"
               className="h-32 w-32 rounded-full object-cover border-4 border-gray-200 shadow-lg"
             />

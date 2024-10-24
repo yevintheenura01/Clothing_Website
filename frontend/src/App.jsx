@@ -17,7 +17,16 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import Cart from './components/Cart/Cart';
 
 
-
+//yevin
+import Login from './components/Login/Login';  
+import Register from './components/Register/Register';
+import Questions from './components/Register/OnePageForm';
+import Q1 from './components/Register/Q1';
+import UserProfile from './components/Profile/UserProfile';
+import QuestionsDisplay from './components/Profile/QuestionsPage';
+import Card from './components/Card/Card';
+import ForgotPassword from './components/ForgotPwd/ForgotPassword';
+import ResetPassword from './components/ForgotPwd/ResetPassword';
 
 
 
@@ -80,8 +89,28 @@ const App = () => {
         </div>
         <Footer />
       </Router>
+        <Router>
+          {/*yevin */}
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />      
+            <Route path='/questions' element={<Questions/>}/>
+            <Route path ='/q1' element={<Q1/>}/>
+            <Route path='/uProfile' element={<UserProfile/>}/>
+            <Route path='/qDisplay' element={<QuestionsDisplay/>}/>
+            <Route path='/card' element={<Card/>}/>
+            <Route path='/forgot-password' element={<ForgotPassword/>}/>  
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+
+
+    
+          </Routes>
+
+      </Router>
     </div>
-  
+
+    
 
 
 
