@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
@@ -16,8 +16,7 @@ import VirtualTryOn from "./components/VirtualTryOn/VirtualTryOn";
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Cart from './components/Cart/Cart';
 
-
-//yevin
+// Additional routes (Yevin)
 import Login from './components/Login/Login';  
 import Register from './components/Register/Register';
 import Questions from './components/Register/OnePageForm';
@@ -27,29 +26,6 @@ import QuestionsDisplay from './components/Profile/QuestionsPage';
 import Card from './components/Card/Card';
 import ForgotPassword from './components/ForgotPwd/ForgotPassword';
 import ResetPassword from './components/ForgotPwd/ResetPassword';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const App = () => {
   const [favorites, setFavorites] = useState([]);
@@ -64,12 +40,30 @@ const App = () => {
     AOS.refresh();
   }, []);
 
+  // Create a wrapper to conditionally render Navbar and Footer
+  const ConditionalWrapper = ({ children }) => {
+    const location = useLocation();
+    
+    // Hide Navbar and Footer on /virtualTryOn route
+    const hideHeaderFooter = location.pathname === '/virtualTryOn';
+    
+    return (
+      <>
+        {!hideHeaderFooter && <Navbar />}
+        <div className="flex-grow">
+          {children}
+        </div>
+        {!hideHeaderFooter && <Footer />}
+      </>
+    );
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Router>
-        <Navbar />
-        <div className="flex-grow">
+        <ConditionalWrapper>
           <Routes>
+            {/* Main routes */}
             <Route path="/" element={
               <>
                 <Hero />
@@ -83,62 +77,24 @@ const App = () => {
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/fashion" element={<Fashion />} /> 
             <Route path="/virtualTryOn" element={<VirtualTryOn />} />
-            <Route path="/ProductDetails" element={<ProductDetails />} /> {/* Add the AddCart route */}
+            <Route path="/ProductDetails" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
-        <Router>
-          {/*yevin */}
-          <Routes>
+            
+            {/* Yevin's additional routes */}
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />      
-            <Route path='/questions' element={<Questions/>}/>
-            <Route path ='/q1' element={<Q1/>}/>
-            <Route path='/uProfile' element={<UserProfile/>}/>
-            <Route path='/qDisplay' element={<QuestionsDisplay/>}/>
-            <Route path='/card' element={<Card/>}/>
-            <Route path='/forgot-password' element={<ForgotPassword/>}/>  
+            <Route path="/login" element={<Login />} />
+            <Route path='/questions' element={<Questions />} />
+            <Route path='/q1' element={<Q1 />} />
+            <Route path='/uProfile' element={<UserProfile />} />
+            <Route path='/qDisplay' element={<QuestionsDisplay />} />
+            <Route path='/card' element={<Card />} />
+            <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
-
-
-
-    
           </Routes>
-
+        </ConditionalWrapper>
       </Router>
     </div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    );
+  );
 };
 
 export default App;
