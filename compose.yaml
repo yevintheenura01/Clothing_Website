@@ -1,0 +1,30 @@
+services:
+  clothing_frontend:
+    image: ghcr.io/yevintheenura01/Clothing_Website_Frontend:latest
+    restart: always
+    volumes:
+      - ./frontend/.env:/app/.env
+    networks:
+      - clothing_network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+  # Monitor and update containers every 30 secomds for newer build images
+  clothing_backend:
+    image: ghcr.io/yevintheenura01/Clothing_Website_Backend:latest
+    restart: always
+    volumes:
+      - ./backend/.env:/app/.env
+    networks:
+      - clothing_network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"  
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: ["--interval", "30", "--cleanup", "--rolling-restart", "--label-enable"]
+    env_file: "watchtower.env"
+
+networks:
+    clothing_network:
+      driver: bridge
