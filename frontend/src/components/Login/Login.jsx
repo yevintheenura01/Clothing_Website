@@ -136,7 +136,7 @@ const Login = () => {
         // Store userID in localStorage
         localStorage.setItem('userID', userID);
         // Redirect to the questions form
-        navigate('/uProfile');
+        navigate('/');
       }
     } catch (error) {
       console.error('Error during login:', error.response?.data?.message || error.message);
@@ -197,7 +197,7 @@ const Login = () => {
               </a>
             </div>
             <div className="flex items-center justify-between">
-              <button
+              {/* <button
                 type="submit"
                 className={`bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-gray-800 ${
                   loading ? 'opacity-50 cursor-not-allowed' : ''
@@ -205,11 +205,21 @@ const Login = () => {
                 disabled={loading}
               >
                 {loading ? 'Logging in...' : 'Login'}
+              </button> */}
+              <button
+                type="submit"
+                className={`bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-yellow-600 ${
+                    loading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+                disabled={loading}
+                >
+                {loading ? 'Logging in...' : 'Login'}
               </button>
+
             </div>
           </form>
           <a href='/register'>
-              <h1 className="text-center underline text-sm pt-16">Don't have an account</h1>
+              <h1 className="text-center underline text-sm pt-16 hover:text-red-500 hover:text-base hover:font-semibold">Don't have an account</h1>
               </a>
         </div>
       </div>
