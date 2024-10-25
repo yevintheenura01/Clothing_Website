@@ -1,6 +1,6 @@
 services:
   clothing_frontend:
-    image: ghcr.io/yevintheenura01/Clothing_Website_Frontend:latest
+    image: ghcr.io/yevintheenura01/clothing_website_frontend:latest
     restart: always
     volumes:
       - ./frontend/.env:/app/.env
@@ -10,7 +10,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
   # Monitor and update containers every 30 secomds for newer build images
   clothing_backend:
-    image: ghcr.io/yevintheenura01/Clothing_Website_Backend:latest
+    image: ghcr.io/yevintheenura01/clothing_website_backend:latest
     restart: always
     volumes:
       - ./backend/.env:/app/.env
