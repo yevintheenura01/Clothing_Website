@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Import axios
-import bgImage from '../../assets/bgImage.webp';
-import { FaStar } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Import axios
+import bgImage from "../../assets/bgImage.webp";
+import { FaStar } from "react-icons/fa";
 
 const Fashion = () => {
   const [fashionData, setFashionData] = useState([]); // State to hold fetched products
@@ -12,10 +12,12 @@ const Fashion = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/products'); // Your backend endpoint
+        const response = await axios.get(
+          "https://fitfusion.iamtrazy.eu.org/api/products"
+        ); // Your backend endpoint
         setFashionData(response.data); // Set the fetched data to state
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       } finally {
         setLoading(false); // Stop loading when fetch is done
       }
@@ -25,7 +27,7 @@ const Fashion = () => {
   }, []);
 
   const handleOrderNow = (item) => {
-    navigate('/ProductDetails', { state: { item } }); // Navigate to ProductDetails with item data
+    navigate("/ProductDetails", { state: { item } }); // Navigate to ProductDetails with item data
   };
 
   return (
@@ -43,7 +45,11 @@ const Fashion = () => {
           <h2 className="text-3xl font-bold mb-2" data-aos="fade-up">
             Top Products
           </h2>
-          <p className="text-gray-500 text-lg" data-aos="fade-up" data-aos-delay="100">
+          <p
+            className="text-gray-500 text-lg"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             Explore the best from our collection
           </p>
         </div>
@@ -59,7 +65,7 @@ const Fashion = () => {
               >
                 <div className="overflow-hidden">
                   <img
-                    src={`http://localhost:5000/uploads/${item.img}`} // Ensure the correct path is used
+                    src={`https://fitfusion.iamtrazy.eu.org/api/uploads/${item.img}`} // Ensure the correct path is used
                     alt={item.title}
                     className="max-w-full h-auto block mx-auto group-hover:scale-110 transition duration-500"
                   />
@@ -75,7 +81,9 @@ const Fashion = () => {
                   <p className="text-gray-500 group-hover:text-white transition duration-300 text-sm mb-2">
                     {item.description}
                   </p>
-                  <p className="text-lg font-semibold mb-4">Rs {item.price}.00</p>
+                  <p className="text-lg font-semibold mb-4">
+                    Rs {item.price}.00
+                  </p>
                   <button
                     className="bg-primary hover:scale-105 transition-all duration-300 text-white py-2 px-6 rounded-full group-hover:bg-white group-hover:text-primary"
                     onClick={() => handleOrderNow(item)}

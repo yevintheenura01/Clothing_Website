@@ -20,7 +20,7 @@
 //     }
 
 //     // Fetch user data using userID
-//     axios.get(`http://localhost:5000/reg/${userID}`)
+//     axios.get(`https://fitfusion.iamtrazy.eu.org/api/reg/${userID}`)
 //       .then(res => setUserData(res.data))
 //       .catch(err => console.error(err));
 //   }, [userID]);
@@ -43,7 +43,7 @@
 
 //   const handleSaveProfile = async (e) => {
 //     e.preventDefault();
-    
+
 //     const formData = new FormData();
 //     formData.append('name', userData.name); // Use userData.name
 //     if (newPassword) { // Only append new password if provided
@@ -52,9 +52,9 @@
 //     if (profilePictureFile) {
 //       formData.append('profilePicture', profilePictureFile); // profilePictureFile should be a file object from an input
 //     }
-    
+
 //     try {
-//       const response = await axios.put(`http://localhost:5000/reg/${userID}`, formData, {
+//       const response = await axios.put(`https://fitfusion.iamtrazy.eu.org/api/reg/${userID}`, formData, {
 //         headers: {
 //           'Content-Type': 'multipart/form-data'
 //         }
@@ -74,7 +74,7 @@
 //     }
 
 //     if (window.confirm("Are you sure you want to delete your profile?")) {
-//       axios.delete(`http://localhost:5000/reg/${userID}`)
+//       axios.delete(`https://fitfusion.iamtrazy.eu.org/api/reg/${userID}`)
 //         .then(() => {
 //           alert('Profile deleted successfully');
 //           localStorage.removeItem('userID'); // Clear userID from localStorage after deletion
@@ -107,13 +107,13 @@
 //         {userData.profilePicture && (
 //           <div className="flex justify-center mb-4">
 //             <img
-//               src={`http://localhost:5000/uploads/${userData.profilePicture}`} // Assuming your backend runs on localhost:5000
+//               src={`https://fitfusion.iamtrazy.eu.org/api/uploads/${userData.profilePicture}`} // Assuming your backend runs on localhost:5000
 //               alt="Profile"
 //               className="h-32 w-32 rounded-full"
 //             />
 //           </div>
 //         )}
-        
+
 //         <div className="mb-4">
 //           <label className="block text-gray-700">Name</label>
 //           <input
@@ -177,19 +177,19 @@
 
 // export default UserProfile;
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
   const [userData, setUserData] = useState({
-    name: '',
-    email: '',
-    profilePicture: '',
+    name: "",
+    email: "",
+    profilePicture: "",
   });
-  const [newPassword, setNewPassword] = useState('');
+  const [newPassword, setNewPassword] = useState("");
   const [profilePictureFile, setProfilePictureFile] = useState(null);
-  const userID = localStorage.getItem('userID');
+  const userID = localStorage.getItem("userID");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -198,17 +198,18 @@ const UserProfile = () => {
       return;
     }
 
-    axios.get(`http://localhost:5000/reg/${userID}`)
-      .then(res => setUserData(res.data))
-      .catch(err => console.error(err));
+    axios
+      .get(`https://fitfusion.iamtrazy.eu.org/api/reg/${userID}`)
+      .then((res) => setUserData(res.data))
+      .catch((err) => console.error(err));
   }, [userID]);
 
   const handleProfileClick = () => {
-    navigate('/uProfile');
+    navigate("/uProfile");
   };
 
   const handleQuestionsClick = () => {
-    navigate('/qDisplay');
+    navigate("/qDisplay");
   };
 
   const handleInputChange = (e) => {
@@ -223,25 +224,29 @@ const UserProfile = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', userData.name);
+    formData.append("name", userData.name);
     if (newPassword) {
-      formData.append('password', newPassword);
+      formData.append("password", newPassword);
     }
     if (profilePictureFile) {
-      formData.append('profilePicture', profilePictureFile);
+      formData.append("profilePicture", profilePictureFile);
     }
 
     try {
-      const response = await axios.put(`http://localhost:5000/reg/${userID}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.put(
+        `https://fitfusion.iamtrazy.eu.org/api/reg/${userID}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
-      console.log('Profile updated:', response.data);
-      alert('Profile updated successfully');
-      navigate('/uProfile');
+      );
+      console.log("Profile updated:", response.data);
+      alert("Profile updated successfully");
+      navigate("/uProfile");
     } catch (error) {
-      console.error('Error updating profile:', error);
+      console.error("Error updating profile:", error);
     }
   };
 
@@ -252,13 +257,14 @@ const UserProfile = () => {
     }
 
     if (window.confirm("Are you sure you want to delete your profile?")) {
-      axios.delete(`http://localhost:5000/reg/${userID}`)
+      axios
+        .delete(`https://fitfusion.iamtrazy.eu.org/api/reg/${userID}`)
         .then(() => {
-          alert('Profile deleted successfully');
-          localStorage.removeItem('userID');
+          alert("Profile deleted successfully");
+          localStorage.removeItem("userID");
           navigate("/register");
         })
-        .catch(err => console.error(err));
+        .catch((err) => console.error(err));
     }
   };
 
@@ -269,12 +275,18 @@ const UserProfile = () => {
         <h2 className="text-2xl font-bold mb-6">Menu</h2>
         <ul>
           <li className="mb-4">
-            <button onClick={handleProfileClick} className="w-full text-left p-3 bg-gray-800 rounded-lg hover:bg-gray-700">
+            <button
+              onClick={handleProfileClick}
+              className="w-full text-left p-3 bg-gray-800 rounded-lg hover:bg-gray-700"
+            >
               Profile
             </button>
           </li>
           <li>
-            <button onClick={handleQuestionsClick} className="w-full text-left p-3 bg-gray-800 rounded-lg hover:bg-gray-700">
+            <button
+              onClick={handleQuestionsClick}
+              className="w-full text-left p-3 bg-gray-800 rounded-lg hover:bg-gray-700"
+            >
               Questions
             </button>
           </li>
@@ -289,7 +301,7 @@ const UserProfile = () => {
         {userData.profilePicture && (
           <div className="flex justify-center mb-2">
             <img
-              src={`http://localhost:5000/upload/${userData.profilePicture}`}
+              src={`https://fitfusion.iamtrazy.eu.org/api/upload/${userData.profilePicture}`}
               alt="Profile"
               className="h-32 w-32 rounded-full object-cover border-4 border-gray-200 shadow-lg"
             />
@@ -297,7 +309,9 @@ const UserProfile = () => {
         )}
 
         <div className="mb-4">
-          <label className="block text-base font-semibold text-gray-700 mb-2">Name</label>
+          <label className="block text-base font-semibold text-gray-700 mb-2">
+            Name
+          </label>
           <input
             type="text"
             name="name"
@@ -308,7 +322,9 @@ const UserProfile = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-base font-semibold text-gray-700 mb-2">Email</label>
+          <label className="block text-base font-semibold text-gray-700 mb-2">
+            Email
+          </label>
           <input
             type="email"
             name="email"
@@ -319,7 +335,9 @@ const UserProfile = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-base font-semibold text-gray-700 mb-2">New Password</label>
+          <label className="block text-base font-semibold text-gray-700 mb-2">
+            New Password
+          </label>
           <input
             type="password"
             name="newPassword"
@@ -331,7 +349,9 @@ const UserProfile = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-base font-semibold text-gray-700 mb-2">Change Profile Picture</label>
+          <label className="block text-base font-semibold text-gray-700 mb-2">
+            Change Profile Picture
+          </label>
           <input
             type="file"
             onChange={handleFileChange}

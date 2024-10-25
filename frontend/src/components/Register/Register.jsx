@@ -29,15 +29,15 @@
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-  
+
 //     try {
 //       // Post data to the backend
-//       const response = await axios.post('http://localhost:5000/reg', formData, {
+//       const response = await axios.post('https://fitfusion.iamtrazy.eu.org/api/reg', formData, {
 //         headers: {
 //           'Content-Type': 'application/json',
 //         },
 //       });
-      
+
 //     // Log the response data to see what's coming back
 //     console.log('Response from server:', response.data);
 
@@ -61,7 +61,6 @@
 //       }
 //     }
 //   };
-  
 
 //   return (
 //     <div className="flex justify-center items-center h-screen bg-gray-100">
@@ -151,17 +150,17 @@
 
 // export default Register;
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Checkbox, Typography } from "@material-tailwind/react";
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import RegisterImg from './register.jpg';
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import RegisterImg from "./register.jpg";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
     policy: false,
   });
   const navigate = useNavigate();
@@ -186,29 +185,33 @@ const Register = () => {
 
     try {
       // Post data to the backend
-      const response = await axios.post('http://localhost:5000/reg', formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await axios.post(
+        "https://fitfusion.iamtrazy.eu.org/api/reg",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      console.log('Response from server:', response.data);
+      console.log("Response from server:", response.data);
 
       if (response.status === 200) {
         const { userID } = response.data;
         if (userID) {
-          localStorage.setItem('userID', userID);
-          alert('Registration successful!');
-          navigate('/questions');
+          localStorage.setItem("userID", userID);
+          alert("Registration successful!");
+          navigate("/questions");
         } else {
-          alert('Registration failed: No userID returned from server.');
+          alert("Registration failed: No userID returned from server.");
         }
       }
     } catch (error) {
       if (error.response) {
         alert(`Registration failed: ${error.response.data.message}`);
       } else {
-        alert('Registration failed due to network error.');
+        alert("Registration failed due to network error.");
       }
     }
   };
@@ -227,10 +230,15 @@ const Register = () => {
 
         {/* Right Side with Form */}
         <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-2xl font-bold text-center mb-6 text-black">Register</h2>
+          <h2 className="text-2xl font-bold text-center mb-6 text-black">
+            Register
+          </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4 text-left">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="name"
+              >
                 Name
               </label>
               <input
@@ -245,7 +253,10 @@ const Register = () => {
               />
             </div>
             <div className="mb-4 text-left">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
                 Email
               </label>
               <input
@@ -260,7 +271,10 @@ const Register = () => {
               />
             </div>
             <div className="mb-4 text-left">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
                 Password
               </label>
               <input
@@ -280,7 +294,10 @@ const Register = () => {
                 checked={formData.policy}
                 onChange={handleCheckboxChange}
                 label={
-                  <Typography color="blue-gray" className="flex font-medium text-black">
+                  <Typography
+                    color="blue-gray"
+                    className="flex font-medium text-black"
+                  >
                     I agree with the
                     <Typography
                       as="a"

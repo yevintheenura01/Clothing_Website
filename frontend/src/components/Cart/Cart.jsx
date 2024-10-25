@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
+import axios from "axios";
 
 const Cart = () => {
   const location = useLocation();
@@ -13,7 +13,9 @@ const Cart = () => {
   useEffect(() => {
     if (item) {
       setCartItems((prevItems) => {
-        const existingItem = prevItems.find(cartItem => cartItem.title === item.title);
+        const existingItem = prevItems.find(
+          (cartItem) => cartItem.title === item.title
+        );
         if (!existingItem) {
           return [...prevItems, { ...item, quantity: 1 }];
         }
@@ -26,10 +28,12 @@ const Cart = () => {
 
   const fetchCartItems = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/cart');
+      const response = await axios.get(
+        "https://fitfusion.iamtrazy.eu.org/api/cart"
+      );
       setCartItems(response.data);
     } catch (error) {
-      console.error('Error fetching cart items:', error);
+      console.error("Error fetching cart items:", error);
     }
   };
 
@@ -54,17 +58,19 @@ const Cart = () => {
   const removeItem = async (index) => {
     const itemToRemove = cartItems[index];
     if (!itemToRemove || !itemToRemove._id) {
-      console.error('Item to remove is invalid:', itemToRemove);
+      console.error("Item to remove is invalid:", itemToRemove);
       return;
     }
 
     try {
-      await axios.delete(`http://localhost:5000/cart/${itemToRemove._id}`);
+      await axios.delete(
+        `https://fitfusion.iamtrazy.eu.org/api/cart/${itemToRemove._id}`
+      );
       setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
       setClickedIndex(null);
     } catch (error) {
-      console.error('Error removing item from cart:', error);
-      alert('Failed to remove item from cart. Please try again.');
+      console.error("Error removing item from cart:", error);
+      alert("Failed to remove item from cart. Please try again.");
     }
 
     setClickedIndex(index);
@@ -72,14 +78,17 @@ const Cart = () => {
   };
 
   const calculateTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   const totalPrice = calculateTotalPrice();
 
   const handleCheckout = () => {
     setIsCheckoutClicked(true);
-    navigate('/card'); // Navigate to Card.jsx
+    navigate("/card"); // Navigate to Card.jsx
   };
 
   return (
@@ -87,7 +96,9 @@ const Cart = () => {
       <div className="container mx-auto flex justify-between">
         {/* Left side: Cart items */}
         <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
-          <h1 className="text-4xl font-bold text-gray-800 mb-6">Shopping Cart</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-6">
+            Shopping Cart
+          </h1>
           {cartItems.length === 0 ? (
             <p className="text-lg text-gray-600">Your cart is empty.</p>
           ) : (
@@ -106,7 +117,7 @@ const Cart = () => {
                   <tr key={index} className="text-center hover:bg-gray-100">
                     <td className="py-4 px-4 border-b">
                       <img
-                        src={`http://localhost:5000/uploads/${item.selectedImage}`}
+                        src={`https://fitfusion.iamtrazy.eu.org/api/uploads/${item.selectedImage}`}
                         alt={item.title}
                         className="w-20 h-20 rounded-lg object-cover"
                       />
@@ -131,11 +142,17 @@ const Cart = () => {
                         </button>
                       </div>
                     </td>
-                    <td className="py-4 px-4 border-b">Rs {item.price * item.quantity}</td>
+                    <td className="py-4 px-4 border-b">
+                      Rs {item.price * item.quantity}
+                    </td>
                     <td className="py-4 px-4 border-b">
                       <button
                         className={`bg-white text-black border border-black px-4 py-2 rounded-full transition-all duration-300 
-                          ${clickedIndex === index ? 'bg-red-500 text-white' : 'hover:bg-red-600 hover:text-white'}`}
+                          ${
+                            clickedIndex === index
+                              ? "bg-red-500 text-white"
+                              : "hover:bg-red-600 hover:text-white"
+                          }`}
                         onClick={() => removeItem(index)}
                       >
                         Remove
@@ -150,22 +167,27 @@ const Cart = () => {
 
         {/* Right side: Total price and checkout button */}
         <div className="bg-white rounded-lg shadow-lg p-6 w-1/4 h-1/4 ml-4 sticky top-20 flex flex-col items-center justify-between">
-          <h2 className="text-3xl font-bold mb-4 text-center">Total: Rs {totalPrice} </h2>
+          <h2 className="text-3xl font-bold mb-4 text-center">
+            Total: Rs {totalPrice}{" "}
+          </h2>
           <button
             className={`bg-white text-black border border-black px-6 py-3 rounded-full transition-all duration-300 
-              ${isCheckoutClicked ? 'bg-black text-white' : 'hover:bg-primary hover:text-white'}`}
+              ${
+                isCheckoutClicked
+                  ? "bg-black text-white"
+                  : "hover:bg-primary hover:text-white"
+              }`}
             onClick={() => {
-              if (localStorage.getItem('userID')) {
+              if (localStorage.getItem("userID")) {
                 handleCheckout();
               } else {
-                alert('Please log in to proceed to checkout.');
+                alert("Please log in to proceed to checkout.");
               }
             }}
           >
             Checkout
           </button>
         </div>
-
       </div>
     </div>
   );

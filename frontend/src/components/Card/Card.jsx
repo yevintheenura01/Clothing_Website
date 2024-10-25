@@ -25,7 +25,7 @@ function Card() {
         e.preventDefault();
         try {
             const userID = 2; // Assuming userID from logged-in user
-            const response = await axios.post("http://localhost:5000/cards", { userID, ...cardDetails });
+            const response = await axios.post("https://fitfusion.iamtrazy.eu.org/api/cards", { userID, ...cardDetails });
             
             // Open modal on successful card save
             if (response.status === 200) {
