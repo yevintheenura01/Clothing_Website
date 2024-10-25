@@ -64,7 +64,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom for navigation
-import Logo from "../../assets/logo.jpg"; // Import the logo icon image
+import Logo from "../../assets/fitfusion.png"; // Import the logo icon image
 import CartIcon from "../../assets/cart.png"; // Import the cart icon image
 import HeartIcon from "../../assets/wardrobe.png"; // Import the heart icon image
 import ProfileImage from "../../assets/user.png"; // Import the user icon image
@@ -92,7 +92,7 @@ export default function Navbar() {
               <img
                 src={Logo}
                 alt="FitFusion Logo"
-                className="w-[50px] h-[50px] max-h-full"
+                className="w-[80px] h-[80px] max-h-full"
               />
             </Link>
           </div>
