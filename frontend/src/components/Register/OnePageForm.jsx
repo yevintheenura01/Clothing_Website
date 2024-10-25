@@ -496,7 +496,7 @@ const OnePageForm = () => {
 
         if (response.status === 200) {
             alert("Questions submitted successfully!");
-            navigate('/uProfile');
+            navigate('/');
             setFormData({
                 ageGroup: '',
                 bust: '',
