@@ -11,43 +11,43 @@ const ProductsData = [
     {
         id: 1,
         img: img1,
-        title: "Women Ethnic",
-        description: "new cloth"
+        title: "FitFushion Matte Touch Lipstick",
+        description: "A highly pigmented, comfortable, matte finish lipstick"
     },
 
     {
         id: 2,
         img: img2,
-        title: "Women western",
-        description: "new cloth"
+        title: "FitFushion Fashion Nail Polish",
+        description: "21 Toxin Free Viana Fashion Nail Polish has a wide variety of colourful and neutral shades"
     },
 
     {
         id: 3,
         img: img3,
-        title: "Women western",
-        description: "new cloth"
+        title: "FitFushion Hair Thickening & Volumizing",
+        description: "Promotes hair growth and reduce hair loss Hair Thickening & Volumizing"
     },
 
     {
         id: 4,
         img: img4,
-        title: "Women western",
-        description: "new cloth"
+        title: "FitFushion HD Lipstick",
+        description: "A truly game-changing, iconic, smooth, and creamy lipstick to deliver the high definition, elegant hydrated lips of your dreams."
     },
 
     {
         id: 5,
         img: img5,
-        title: "Women western",
-        description: "new cloth"
+        title: "FitFushion HD Sponge Compressed Powder",
+        description: "A Flawless High Definition Matte Finish Worthy Of your Second Skin"
     },
 
     {
         id: 6,
         img: img6,
-        title: "Women western",
-        description: "new cloth"
+        title: "FitFushion HD Liquid Foundation",
+        description: "A truly game changing, long wear, light as a feather liquid foundation to deliver the High Definition Flawless Finish of your Dreams."
     }
 ]
 
