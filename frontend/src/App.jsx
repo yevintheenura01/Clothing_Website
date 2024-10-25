@@ -45,8 +45,13 @@ const App = () => {
     const location = useLocation();
     
     // Hide Navbar and Footer on /virtualTryOn route
-    const hideHeaderFooter = location.pathname === '/virtualTryOn';
-    
+    const hideHeaderFooter = 
+                              location.pathname === '/login' ||
+                              location.pathname === '/register' ||
+                              location.pathname === '/questions' ||
+                              location.pathname === '/forgot-password' ||
+                              location.pathname === '/questions' ||
+                              location.pathname === '/card';
     return (
       <>
         {!hideHeaderFooter && <Navbar />}
