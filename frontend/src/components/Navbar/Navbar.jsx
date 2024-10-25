@@ -51,7 +51,7 @@ export default function Navbar() {
                 <img src={HeartIcon} alt="Favorites" className='w-[20px] h-[20px]' />
               </Link>
               {/* Profile Icon */}
-              <Link to="/profile" className='hover:text-gray-400' aria-label="User Profile">
+              <Link to="/uProfile" className='hover:text-gray-400' aria-label="User Profile">
                 <img src={ProfileImage} alt="Profile" className='w-[20px] h-[20px] rounded-full' />
               </Link>
             </div>
