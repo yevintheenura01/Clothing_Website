@@ -150,15 +150,21 @@ const Cart = () => {
 
         {/* Right side: Total price and checkout button */}
         <div className="bg-white rounded-lg shadow-lg p-6 w-1/4 h-1/4 ml-4 sticky top-20 flex flex-col items-center justify-between">
-  <h2 className="text-3xl font-bold mb-4 text-center">Total: Rs {totalPrice} </h2>
-  <button
-    className={`bg-white text-black border border-black px-6 py-3 rounded-full transition-all duration-300 
-      ${isCheckoutClicked ? 'bg-black text-white' : 'hover:bg-primary hover:text-white'}`}
-    onClick={handleCheckout} // Use handleCheckout
-  >
-    Checkout
-  </button>
-</div>
+          <h2 className="text-3xl font-bold mb-4 text-center">Total: Rs {totalPrice} </h2>
+          <button
+            className={`bg-white text-black border border-black px-6 py-3 rounded-full transition-all duration-300 
+              ${isCheckoutClicked ? 'bg-black text-white' : 'hover:bg-primary hover:text-white'}`}
+            onClick={() => {
+              if (localStorage.getItem('userID')) {
+                handleCheckout();
+              } else {
+                alert('Please log in to proceed to checkout.');
+              }
+            }}
+          >
+            Checkout
+          </button>
+        </div>
 
       </div>
     </div>
