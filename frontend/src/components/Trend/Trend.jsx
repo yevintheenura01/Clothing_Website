@@ -108,7 +108,7 @@ const Trend = ({ favorites, setFavorites }) => {
                                     <p className="text-gray-500 group-hover:text-white transition duration-300 text-sm mb-2">
                                         {item.description}
                                     </p>
-                                    <p className="text-lg font-semibold mb-4">{item.price}</p>
+                                    <p className="text-lg font-semibold mb-4">Rs {item.price}.00</p>
                                     <button
                                         className="bg-primary hover:scale-105 transition-all duration-300 text-white py-2 px-6 rounded-full group-hover:bg-white group-hover:text-primary"
                                         onClick={() => handleOrderNow(item)}

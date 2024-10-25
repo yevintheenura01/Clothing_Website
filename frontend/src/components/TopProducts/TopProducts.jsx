@@ -1,10 +1,10 @@
 import React from 'react'
-import img1 from "../../assets/shirt4.png"
-import img2 from "../../assets/shirt3.png"
-import img3 from "../../assets/shirt5.png"
-import img4 from "../../assets/shirt6.png"
-import img5 from "../../assets/shirt7.png"
-import img6 from "../../assets/shirt8.png"
+import img1 from "../../assets/makeup01.webp"
+import img2 from "../../assets/makeup02.webp"
+import img3 from "../../assets/makeup3.webp"
+import img4 from "../../assets/makeup04.webp"
+import img5 from "../../assets/makeup05.webp"
+import img6 from "../../assets/makeup06.webp"
 import { FaStar} from "react-icons/fa";
 
 const ProductsData = [

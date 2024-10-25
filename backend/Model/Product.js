@@ -35,7 +35,7 @@ module.exports = [
       "/blackdress07.jpg",
       "/blackdress08.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/blackdress01.jpg" // Add the trend image path
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ module.exports = [
       "/bluedress07.jpg",
       "/bluedress08.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/bluedress01.jpg" // Add the trend image path
   },
   {
     id: 4,
@@ -73,7 +73,7 @@ module.exports = [
       "/shortdress07.jpg",
       "/shortdress08.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/shortdress01.jpg" // Add the trend image path
   },
   {
     id: 5,
@@ -92,7 +92,7 @@ module.exports = [
       "/rosedress07.jpg",
       "/rosedress08.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/rosedress01.jpg" // Add the trend image path
   },
   {
     id: 6,
@@ -111,7 +111,7 @@ module.exports = [
       "/rose06.jpg",
       "/rose07.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/rose01.jpg" // Add the trend image path
   },
   {
     id: 7,
@@ -130,7 +130,7 @@ module.exports = [
       "/girl06.jpg",
       "/girl07.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/girl01.jpg" // Add the trend image path
   },
   {
     id: 7,
@@ -149,7 +149,7 @@ module.exports = [
       "/diamond06.jpg",
       "/diamond07.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/diamond01.jpg" // Add the trend image path
   },
   {
     id: 7,
@@ -168,6 +168,6 @@ module.exports = [
       "/short06.jpg",
       "/short07.jpg",
     ],
-    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+    trendImage: "/short01.jpg" // Add the trend image path
   },
 ];
