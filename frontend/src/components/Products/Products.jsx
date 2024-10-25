@@ -1,19 +1,23 @@
 import React from 'react';
-import img1 from "../../assets/shoe01.jpg";
-import img2 from "../../assets/shoe02.jpg";
-import img3 from "../../assets/shoe03.jpg";
-import img4 from "../../assets/shoe04.jpg";
-import img5 from "../../assets/shoe05.jpg";
-import img6 from "../../assets/shoe06.jpg";
+import img1 from "../../assets/bag01.avif";
+import img2 from "../../assets/bag02.avif";
+import img3 from "../../assets/bag03.avif";
+import img4 from "../../assets/bag04.avif";
+import img5 from "../../assets/bag05.avif";
+import img6 from "../../assets/bag06.avif";
+import img7 from "../../assets/bag07.avif";
+import img8 from "../../assets/bag08.avif";
 import { FaStar } from "react-icons/fa6";
 
 const ProductsData = [
-    { id: 1, img: img1, title: "Coutgo Women's Closed Pointed Toe Pumps Stiletto High Heels Wedding Party Dress Shoes", rating: 5.0, color: "White", aosDelay: "0" },
-    { id: 2, img: img2, title: "Marc Fisher Women's Foreva Heeled Sandal", rating: 5.0, color: "Red", aosDelay: "200" },
-    { id: 3, img: img3, title: "Marc Fisher LTD Women's Paxton Flat Sandal", rating: 5.0, color: "Red", aosDelay: "200" },
-    { id: 4, img: img4, title: "Crocs Women's Classic Slide | Platform Sandals", rating: 5.0, color: "Red", aosDelay: "200" },
-    { id: 5, img: img5, title: "Crocs Women's Brooklyn Low Wedges Platform Sandals, Chalk Woven, 9", rating: 5.0, color: "Red", aosDelay: "200" },
-    { id: 6, img: img6, title: "JENN ARDOR Wedge Sneakers for Women Fashion Canvas Shoes Casual Platform Hidden Heel Womens Slip On Sneaker Non Slip Side Zipper", rating: 5.0, color: "Red", aosDelay: "200" },
+    { id: 1, img: img1, title: "Metal, Resin, Glass Pearls & Strass Gold & Green", rating: 5.0, color: "Plated Stainless Steel Cubic Zirconia Necklace", aosDelay: "200" },
+    { id: 2, img: img2, title: "Embroidered Satin, Sequins, Glass Beads, Strass & Gold-Tone Metal", rating: 5.0, color: "Plated Stainless Steel Cubic Zirconia Bag", aosDelay: "200" },
+    { id: 3, img: img3, title: "Shiny Lambskin, Bijoux Charms & Gold-Tone Metal Black", rating: 5.0, color: "Women Canvas Shoulder Bag Large Capacity Handbag- 100% Eco-friendly", aosDelay: "200" },
+    { id: 4, img: img4, title: "Velvet Gray", rating: 5.0, color: "Patent-effect Mary Jane-style ballet flats. V-shaped vamp. Square toe. Buckled strap fastening on the instep.", aosDelay: "200" },
+    { id: 5, img: img5, title: "Crocs Women's Brooklyn Low Wedges Platform Sandals, Chalk Woven, 9", rating: 5.0, color: "Slingback kitten heel shoes with a faux-patent finish. Buckle fastening ankle strap. Pointed toe.", aosDelay: "200" },
+    { id: 6, img: img6, title: "JENN ARDOR Wedge Sneakers for Women Fashion Canvas Shoes Casual Platform Hidden Heel Womens Slip On Sneaker Non Slip Side Zipper", rating: 5.0, color: "Slingback shoes in a woven fabric. Metal appliqué detail on the front. Elasticated back strap. Pointed toe.", aosDelay: "200" },
+    { id: 7, img: img7, title: "Wool Tweed & Patent Calfskin", rating: 5.0, color: "Split suede ankle boots. Mini heel. Zip fastening. Round toe", aosDelay: "200" },
+    { id: 8, img: img8, title: "JENN ARDOR Wedge Sneakers for Women Fashion Canvas Shoes Casual Platform Hidden Heel Womens Slip On Sneaker Non Slip Side Zipper", rating: 4.5, color: "Split suede loafers. Penny strap detail on the front. Rounded toe.", aosDelay: "200" },
 ];
 
 const Products = () => {
