@@ -27,13 +27,13 @@ const items = [
       price: 49.99,
       color: "Blue",
       size: "32",
-      img: "/uploads/denim-jeans.jpg",
+      img: "/dress02.webp",
       additionalImages: [
         "/uploads/dress02.webp",
         "/uploads/dress02.webp",
         "/uploads/dress02.webp"
       ],
-      trendImage: "/uploads/trend-denim-jeans.jpg"
+      trendImage: "/dress02.webp"
     },
     {
       id: 3,
@@ -42,8 +42,8 @@ const items = [
       price: 79.99,
       color: "Black",
       size: "L",
-      img: "/uploads/stylish-jacket.jpg",
-      trendImage: "/uploads/trend-stylish-jacket.jpg"
+      img: "/dress03.webp",
+      trendImage: "/dress03.webp"
     }
   ];
   

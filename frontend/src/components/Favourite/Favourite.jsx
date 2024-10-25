@@ -43,7 +43,7 @@ const Favorite = () => {
                                 />
                                 <h3 className="text-xl font-bold text-center">{item.title}</h3>
                                 <p className="text-gray-500 text-center mb-2">{item.description}</p>
-                                <p className="text-lg font-semibold text-center mb-4">{item.price}</p>
+                                <p className="text-lg font-semibold text-center mb-4">Rs {item.price}.00</p>
                                 <button 
                                     onClick={() => handleRemoveFavorite(item._id)}
                                     className="flex items-center justify-center bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600 transition duration-300 w-full"
