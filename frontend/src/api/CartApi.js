@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:5000/cart'; // Base URL
+const API_URL = import.meta.env.VITE_API_URL + "/cart";
 
 // Add item to the cart
 export const addItemToCart = async (item) => {
