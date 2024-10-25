@@ -53,7 +53,7 @@ const ProductDetails = () => {
   };
 
   const handleBuyNow = async () => {
-    // ... existing buy now logic
+    navigate("/card")
   };
 
   const handleFavoriteClick = async () => {
