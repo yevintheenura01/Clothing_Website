@@ -13,6 +13,7 @@ const ProductRoute = require("./Routes/ProductRoutes");
 const itemRoutes = require("./Routes/itemRoutes");
 const favoriteRoutes = require("./Routes/favorites");
 const ForgotPasswordRoute = require("./Routes/ForgotPasswordRoute");
+const cardRoute = require('./Routes/CardRoute');
 
 
 
@@ -43,6 +44,8 @@ app.use("/cart", CartRoute); // Make sure this line is included
 app.use("/products", ProductRoute);
 app.use('/api/items', itemRoutes);
 app.use("/favorites", favoriteRoutes);
+app.use("/cards",cardRoute);
+app.use("/auth", ForgotPasswordRoute);
 
 
 
