@@ -82,15 +82,15 @@ module.exports = [
     price: 49.99,
     color: "Blue",
     size: "32",
-    img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    img: "/rosedress01.jpg",  // Make sure the image exists in the 'Uploads' folder
     additionalImages: [
-      "/shortdress02.jpg",
-      "/shortdress03.jpg",
-      "/shortdress04.jpg",
-      "/shortdress05.jpg",
-      "/shortdress06.jpg",
-      "/shortdress07.jpg",
-      "/shortdress08.jpg",
+      "/rosedress02.jpg",
+      "/rosedress03.jpg",
+      "/rosedress04.jpg",
+      "/rosedress05.jpg",
+      "/rosedress06.jpg",
+      "/rosedress07.jpg",
+      "/rosedress08.jpg",
     ],
     trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
   },
@@ -101,15 +101,15 @@ module.exports = [
     price: 49.99,
     color: "Blue",
     size: "32",
-    img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    img: "/rose01.jpg",  // Make sure the image exists in the 'Uploads' folder
     additionalImages: [
-      "/shortdress02.jpg",
-      "/shortdress03.jpg",
-      "/shortdress04.jpg",
-      "/shortdress05.jpg",
-      "/shortdress06.jpg",
-      "/shortdress07.jpg",
-      "/shortdress08.jpg",
+      "/rose01.jpg",
+      "/rose02.jpg",
+      "/rose03.jpg",
+      "/rose04.jpg",
+      "/rose05.jpg",
+      "/rose06.jpg",
+      "/rose07.jpg",
     ],
     trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
   },
@@ -120,15 +120,53 @@ module.exports = [
     price: 49.99,
     color: "Blue",
     size: "32",
-    img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    img: "/girl01.jpg",  // Make sure the image exists in the 'Uploads' folder
     additionalImages: [
-      "/shortdress02.jpg",
-      "/shortdress03.jpg",
-      "/shortdress04.jpg",
-      "/shortdress05.jpg",
-      "/shortdress06.jpg",
-      "/shortdress07.jpg",
-      "/shortdress08.jpg",
+      "/girl01.jpg",
+      "/girl02.jpg",
+      "/girl03.jpg",
+      "/girl04.jpg",
+      "/girl05.jpg",
+      "/girl06.jpg",
+      "/girl07.jpg",
+    ],
+    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+  },
+  {
+    id: 7,
+    title: "Denim Jeans",
+    description: "Classic blue denim jeans with a comfortable fit.",
+    price: 49.99,
+    color: "Blue",
+    size: "32",
+    img: "/diamond01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    additionalImages: [
+      "/diamond01.jpg",
+      "/diamond02.jpg",
+      "/diamond03.jpg",
+      "/diamond04.jpg",
+      "/diamond05.jpg",
+      "/diamond06.jpg",
+      "/diamond07.jpg",
+    ],
+    trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
+  },
+  {
+    id: 7,
+    title: "Denim Jeans",
+    description: "Classic blue denim jeans with a comfortable fit.",
+    price: 49.99,
+    color: "Blue",
+    size: "32",
+    img: "/short01.jpg",  // Make sure the image exists in the 'Uploads' folder
+    additionalImages: [
+      "/short01.jpg",
+      "/short02.jpg",
+      "/short03.jpg",
+      "/short04.jpg",
+      "/short05.jpg",
+      "/short06.jpg",
+      "/short07.jpg",
     ],
     trendImage: "/uploads/trend-denim-jeans.jpg" // Add the trend image path
   },

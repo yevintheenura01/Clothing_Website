@@ -1,51 +1,26 @@
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { FaHeart, FaRegHeart } from 'react-icons/fa'; // Import the heart icons
 
 const ProductDetails = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const { item } = location.state || {}; // Get the passed item data
 
   const [selectedImage, setSelectedImage] = useState(item?.img); // Initialize with the main image
   const [selectedSize, setSelectedSize] = useState(null); // State to track the selected size
   const [quantity, setQuantity] = useState(1); // State to track the quantity
+  const [isFavorite, setIsFavorite] = useState(false); // Track if the item is favorited
 
-  // Function to handle the Add Cart button click
-  const handleAddToCart = async () => {
-    if (!selectedSize) {
-      alert('Please select a size before adding to the cart.'); // Ensure size is selected
+  // Function to handle the Add Cart button click (single click to add, double-click to remove)
+  const handleAddToCart = async (e) => {
+    if (e.detail === 2) {
+      handleRemoveFromCart(); // Double-click detected
       return;
     }
 
-    try {
-      const response = await axios.post('http://localhost:5000/cart', {
-        _id: item._id, // Use _id for the backend if applicable
-        title: item?.title,
-        price: item?.price,
-        description: item?.description,
-        selectedImage,
-        selectedSize,
-        quantity,
-      });
-
-      // You can handle the response here if needed
-      console.log('Item added to cart:', response.data);
-
-      // Navigate to the cart with the added item data
-      navigate('/cart', {
-        state: { item: response.data }, // Pass the added item details to Cart
-      });
-    } catch (error) {
-      console.error('Error adding item to cart:', error);
-      // Optionally show an error message to the user
-    }
-  };
-
-  // Function to handle the Buy Now button click
-  const handleBuyNow = async () => {
     if (!selectedSize) {
-      alert('Please select a size before buying.'); // Ensure size is selected
+      alert('Please select a size before adding to the cart.');
       return;
     }
 
@@ -60,16 +35,65 @@ const ProductDetails = () => {
         quantity,
       });
 
-      // You can handle the response here if needed
-      console.log('Item purchased:', response.data);
+      console.log('Item added to cart:', response.data);
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+    }
+  };
 
-      // Navigate to the cart with the purchased item data
-      navigate('/cart', {
-        state: { item: response.data }, // Pass the purchased item details to Cart
+  // Function to handle removing from the cart
+  const handleRemoveFromCart = async () => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/cart/${item._id}`, {
+        data: { selectedSize },
       });
+
+      console.log('Item removed from cart:', response.data);
+    } catch (error) {
+      console.error('Error removing item from cart:', error);
+    }
+  };
+
+  // Function to handle the Buy Now button click
+  const handleBuyNow = async () => {
+    if (!selectedSize) {
+      alert('Please select a size before buying.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/cart', {
+        _id: item._id,
+        title: item?.title,
+        price: item?.price,
+        description: item?.description,
+        selectedImage,
+        selectedSize,
+        quantity,
+      });
+
+      console.log('Item purchased:', response.data);
     } catch (error) {
       console.error('Error purchasing item:', error);
-      // Optionally show an error message to the user
+    }
+  };
+
+  // Function to handle adding to favorites
+  const handleFavoriteClick = async () => {
+    setIsFavorite(!isFavorite); // Toggle the heart icon
+
+    try {
+      const response = await axios.post('http://localhost:5000/favorites', {
+        _id: item._id,
+        title: item?.title,
+        price: item?.price,
+        description: item?.description,
+        selectedImage,
+      });
+
+      console.log('Item added to favorites:', response.data);
+    } catch (error) {
+      console.error('Error adding item to favorites:', error);
     }
   };
 
@@ -89,7 +113,7 @@ const ProductDetails = () => {
           <div className="relative" style={{ height: '500px', width: '350px' }}>
             {/* Main Image */}
             <img
-              src={`http://localhost:5000/uploads/${selectedImage}`} // Ensure correct path for the selected image
+              src={`http://localhost:5000/uploads/${selectedImage}`}
               alt={item?.title || 'Product Image'}
               className="rounded-lg shadow-lg border-4 border-gray-300 object-cover"
               style={{ height: '100%', width: '100%' }}
@@ -101,11 +125,11 @@ const ProductDetails = () => {
                 {item.additionalImages.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:5000/uploads/${img}`} // Ensure correct path for additional images
+                    src={`http://localhost:5000/uploads/${img}`}
                     alt={`${item.title} additional view ${index + 1}`}
                     className="rounded-lg shadow-md border-2 border-gray-300 cursor-pointer transition-transform transform hover:scale-110 duration-300 ease-in-out"
                     style={{ width: '50px', height: '65px' }}
-                    onClick={() => setSelectedImage(img)} // Update main image when a thumbnail is clicked
+                    onClick={() => setSelectedImage(img)}
                   />
                 ))}
               </div>
@@ -143,7 +167,7 @@ const ProductDetails = () => {
               <button
                 className="bg-gray-300 px-3 py-1 rounded-lg"
                 onClick={decreaseQuantity}
-                disabled={quantity === 1} // Disable the button if the quantity is 1
+                disabled={quantity === 1}
               >
                 -
               </button>
@@ -157,6 +181,15 @@ const ProductDetails = () => {
             </div>
           </div>
 
+          {/* Favorite Icon - Positioned before the Add to Cart button */}
+          <div onClick={handleFavoriteClick} className="cursor-pointer mb-6">
+            {isFavorite ? (
+              <FaHeart className="text-red-500 text-2xl" />
+            ) : (
+              <FaRegHeart className="text-gray-500 text-2xl" />
+            )}
+          </div>
+
           {/* Add to Cart Button */}
           <button
             className="bg-black text-white py-3 px-6 text-lg mb-2"
@@ -167,7 +200,7 @@ const ProductDetails = () => {
 
           {/* Buy Now Button */}
           <button
-            className="bg-white text-black border border-black py-3 px-6 text-lg"
+            className="bg-white text-black border border-black py-3 px-6 text-lg mb-4"
             onClick={handleBuyNow}
           >
             BUY NOW
