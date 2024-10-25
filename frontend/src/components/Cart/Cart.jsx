@@ -9,20 +9,15 @@ const Cart = () => {
   const [clickedIndex, setClickedIndex] = useState(null); // State to track clicked remove button
 
   useEffect(() => {
-    // If there's an item passed from ProductDetails, add it to the cartItems state
     if (item) {
       setCartItems((prevItems) => {
-        // Check if the item already exists in the cart
         const existingItem = prevItems.find(cartItem => cartItem.title === item.title);
-        
-        // If it doesn't exist, add it; otherwise, return the previous items
         if (!existingItem) {
           return [...prevItems, { ...item, quantity: 1 }]; // Ensure quantity starts at 1
         }
         return prevItems; // No need to add duplicate
       });
     } else {
-      // Fetch existing cart items from the backend if no item is passed
       fetchCartItems();
     }
   }, [item]);
@@ -36,7 +31,6 @@ const Cart = () => {
     }
   };
 
-  // Function to handle quantity increase
   const increaseQuantity = (index) => {
     setCartItems((prevItems) => {
       const newItems = [...prevItems];
@@ -45,7 +39,6 @@ const Cart = () => {
     });
   };
 
-  // Function to handle quantity decrease
   const decreaseQuantity = (index) => {
     setCartItems((prevItems) => {
       const newItems = [...prevItems];
@@ -56,36 +49,26 @@ const Cart = () => {
     });
   };
 
-  // Function to remove item from the cart permanently
   const removeItem = async (index) => {
     const itemToRemove = cartItems[index];
-
-    // Ensure we have a valid item with a unique ID
-    if (!itemToRemove || !itemToRemove._id) { // Change id to _id
+    if (!itemToRemove || !itemToRemove._id) {
       console.error('Item to remove is invalid:', itemToRemove);
-      return; // Exit if there is no valid item
+      return;
     }
 
     try {
-      // Send a DELETE request to your backend using _id
       await axios.delete(`http://localhost:5000/cart/${itemToRemove._id}`);
-      
-      // Update the state to remove the item from the cart
-      setCartItems((prevItems) => {
-        return prevItems.filter((_, i) => i !== index); // Remove item at index
-      });
+      setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
       setClickedIndex(null); // Reset clicked index after removal
     } catch (error) {
       console.error('Error removing item from cart:', error);
       alert('Failed to remove item from cart. Please try again.'); // Notify the user
     }
 
-    // Mark the clicked index for styling change
     setClickedIndex(index);
     setTimeout(() => setClickedIndex(null), 300); // Reset after a short delay
   };
 
-  // Function to calculate total price
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
@@ -93,40 +76,40 @@ const Cart = () => {
   const totalPrice = calculateTotalPrice(); // Calculate total price
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10">
+    <div className="min-h-screen bg-gray-100 py-10">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">Shopping Cart</h1>
+        <h1 className="text-4xl font-bold text-gray-800 mb-6">Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <p className="text-lg text-gray-600">Your cart is empty.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white rounded-lg shadow-md p-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-lg shadow-lg p-6">
               <table className="min-w-full bg-white border border-gray-300">
                 <thead>
-                  <tr className="bg-gray-100">
-                    <th className="py-2 px-4 border-b">Item</th>
-                    <th className="py-2 px-4 border-b">Price (RS)</th>
-                    <th className="py-2 px-4 border-b">Quantity</th>
-                    <th className="py-2 px-4 border-b">Total (RS)</th>
-                    <th className="py-2 px-4 border-b">Actions</th>
+                  <tr className="bg-gray-200">
+                    <th className="py-3 px-4 border-b">Item</th>
+                    <th className="py-3 px-4 border-b">Price (RS)</th>
+                    <th className="py-3 px-4 border-b">Quantity</th>
+                    <th className="py-3 px-4 border-b">Total (RS)</th>
+                    <th className="py-3 px-4 border-b">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {cartItems.map((item, index) => (
-                    <tr key={index} className="text-center">
+                    <tr key={index} className="text-center hover:bg-gray-100">
                       <td className="py-4 px-4 border-b">
                         <img
                           src={`http://localhost:5000/uploads/${item.selectedImage}`}
                           alt={item.title}
                           className="w-20 h-20 rounded-lg object-cover"
                         />
-                        <div className="mt-2">{item.title}</div>
+                        <div className="mt-2 text-left">{item.title}</div>
                       </td>
                       <td className="py-4 px-4 border-b">{item.price} RS</td>
                       <td className="py-4 px-4 border-b">
                         <div className="flex items-center justify-center">
                           <button
-                            className="bg-gray-300 px-2 py-1 rounded-lg"
+                            className="bg-gray-300 px-2 py-1 rounded-lg hover:bg-gray-400 transition"
                             onClick={() => decreaseQuantity(index)}
                             disabled={item.quantity <= 1}
                           >
@@ -134,7 +117,7 @@ const Cart = () => {
                           </button>
                           <span className="mx-2">{item.quantity}</span>
                           <button
-                            className="bg-gray-300 px-2 py-1 rounded-lg"
+                            className="bg-gray-300 px-2 py-1 rounded-lg hover:bg-gray-400 transition"
                             onClick={() => increaseQuantity(index)}
                           >
                             +
@@ -156,9 +139,9 @@ const Cart = () => {
                 </tbody>
               </table>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between">
-              <h2 className="text-2xl font-bold mb-4">Total Price: {totalPrice} RS</h2>
-              <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-secondary transition duration-300 self-end">
+            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between">
+              <h2 className="text-3xl font-bold mb-4">Total Price: {totalPrice} RS</h2>
+              <button className="bg-primary text-white px-6 py-3 rounded-full hover:bg-secondary transition duration-300 self-end">
                 Checkout
               </button>
             </div>
