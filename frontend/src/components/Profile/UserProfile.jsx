@@ -244,7 +244,8 @@ const UserProfile = () => {
       );
       console.log("Profile updated:", response.data);
       alert("Profile updated successfully");
-      navigate("/uProfile");
+      window.location.reload();
+      // navigate("/uProfile");
     } catch (error) {
       console.error("Error updating profile:", error);
     }
