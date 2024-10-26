@@ -26,6 +26,7 @@ import QuestionsDisplay from './components/Profile/QuestionsPage';
 import Card from './components/Card/Card';
 import ForgotPassword from './components/ForgotPwd/ForgotPassword';
 import ResetPassword from './components/ForgotPwd/ResetPassword';
+import Wardrobe from './components/Wardrobe/Wardrobe';
 
 const App = () => {
   const [favorites, setFavorites] = useState([]);
@@ -84,6 +85,7 @@ const App = () => {
             <Route path="/virtualTryOn" element={<VirtualTryOn />} />
             <Route path="/ProductDetails" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/wardrobe" element={<Wardrobe/>}/>
             
             {/* Yevin's additional routes */}
             <Route path="/register" element={<Register />} />

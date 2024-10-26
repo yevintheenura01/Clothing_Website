@@ -68,6 +68,7 @@ import Logo from "../../assets/fitfusion.png"; // Import the logo icon image
 import CartIcon from "../../assets/cart.png"; // Import the cart icon image
 import HeartIcon from "../../assets/wardrobe.png"; // Import the heart icon image
 import ProfileImage from "../../assets/user.png"; // Import the user icon image
+import {FaHeart } from "react-icons/fa";
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -142,18 +143,27 @@ export default function Navbar() {
                   className="w-[20px] h-[20px]"
                 />
               </Link>
-              {/* Favorites Icon */}
               <Link
-                to="/api/favorite"
+                to="/wardrobe"
                 className="hover:text-gray-400"
-                aria-label="Favorites"
+                aria-label="Shopping Cart"
               >
                 <img
                   src={HeartIcon}
-                  alt="Favorites"
+                  alt="Shopping Cart"
                   className="w-[20px] h-[20px]"
                 />
               </Link>
+              {/* Favorites Icon */}
+              {/* Favorites Icon */}
+<Link
+  to="/api/favorite"
+  className="hover:text-gray-400"
+  aria-label="Favorites"
+>
+  <FaHeart className="w-[20px] h-[20px]" />
+</Link>
+
               {/* Conditional Rendering: Login or Profile Icon */}
               {isLoggedIn ? (
                 <Link
