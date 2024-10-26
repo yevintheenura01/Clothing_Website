@@ -3,7 +3,7 @@ module.exports = [
     id: 1,
     title: "Summer T-Shirt",
     description: "A light and comfortable t-shirt perfect for summer.",
-    price: 26450,
+    price: 26450.00,
     color: "Blue",
     size: "M",
     img: "/dress01.webp",
@@ -22,7 +22,7 @@ module.exports = [
     id: 2,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 3400.00,
     color: "Blue",
     size: "32",
     img: "/blackdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
@@ -41,7 +41,7 @@ module.exports = [
     id: 3,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 4500.00,
     color: "Blue",
     size: "32",
     img: "/bluedress01.jpg",  // Make sure the image exists in the 'Uploads' folder
@@ -60,7 +60,7 @@ module.exports = [
     id: 4,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 5600.00,
     color: "Blue",
     size: "32",
     img: "/shortdress01.jpg",  // Make sure the image exists in the 'Uploads' folder
@@ -79,7 +79,7 @@ module.exports = [
     id: 5,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 2250.00,
     color: "Blue",
     size: "32",
     img: "/rosedress01.jpg",  // Make sure the image exists in the 'Uploads' folder
@@ -98,7 +98,7 @@ module.exports = [
     id: 6,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 5600.00,
     color: "Blue",
     size: "32",
     img: "/rose01.jpg",  // Make sure the image exists in the 'Uploads' folder
@@ -117,7 +117,7 @@ module.exports = [
     id: 7,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 3850.00,
     color: "Blue",
     size: "32",
     img: "/girl01.jpg",  // Make sure the image exists in the 'Uploads' folder
@@ -136,7 +136,7 @@ module.exports = [
     id: 7,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 2300.00,
     color: "Blue",
     size: "32",
     img: "/diamond01.jpg",  // Make sure the image exists in the 'Uploads' folder
@@ -155,7 +155,7 @@ module.exports = [
     id: 7,
     title: "Denim Jeans",
     description: "Classic blue denim jeans with a comfortable fit.",
-    price: 49.99,
+    price: 9900.00,
     color: "Blue",
     size: "32",
     img: "/short01.jpg",  // Make sure the image exists in the 'Uploads' folder
