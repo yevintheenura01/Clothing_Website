@@ -78,17 +78,17 @@ const App = () => {
                 <Banner />
               </>
             } />
-            {/* <Route path="/trend" element={<Trend setFavorites={setFavorites} favorites={favorites} />} />
+            <Route path="/trend" element={<Trend setFavorites={setFavorites} favorites={favorites} />} />
             <Route path="api/favorite" element={<Favourite favorites={favorites} setFavorites={setFavorites} />} />
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/fashion" element={<Fashion />} /> 
             <Route path="/virtualTryOn" element={<VirtualTryOn />} />
             <Route path="/ProductDetails" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/wardrobe" element={<Wardrobe/>}/> */}
+            <Route path="/wardrobe" element={<Wardrobe/>}/>
             
             {/* Yevin's additional routes */}
-            {/* <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path='/questions' element={<Questions />} />
             <Route path='/q1' element={<Q1 />} />
@@ -96,7 +96,7 @@ const App = () => {
             <Route path='/qDisplay' element={<QuestionsDisplay />} />
             <Route path='/card' element={<Card />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
-            <Route path="/reset-password/:token" element={<ResetPassword />} /> */}
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
           </Routes>
         </ConditionalWrapper>
       </Router>
