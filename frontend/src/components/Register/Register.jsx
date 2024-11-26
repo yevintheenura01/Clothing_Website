@@ -301,7 +301,7 @@ const Register = () => {
                     I agree with the
                     <Typography
                       as="a"
-                      href="#"
+                      href="/terms"
                       color="blue"
                       className="font-medium transition-colors hover:text-blue-500"
                     >

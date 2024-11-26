@@ -40,13 +40,13 @@ export default function Footer() {
           {/* Help */}
           <div className='flex flex-col space-y-2 text-center md:text-left'>
             <h3 className='font-bold text-lg'>Help</h3>
-            <a href="#" className='text-sm hover:text-gray-400'>My Zara Account</a>
+            <a href="#" className='text-sm hover:text-gray-400'>My FitFusion Account</a>
             <a href="#" className='text-sm hover:text-gray-400'>Items and Sizes</a>
             <a href="#" className='text-sm hover:text-gray-400'>Shipping</a>
             <a href="#" className='text-sm hover:text-gray-400'>Payment and Invoices</a>
             <a href="#" className='text-sm hover:text-gray-400'>My Purchases</a>
             <a href="#" className='text-sm hover:text-gray-400'>Exchanges, Returns, and Refunds</a>
-            <a href="#" className='text-sm hover:text-gray-400'>Zara Experiences</a>
+            <a href="#" className='text-sm hover:text-gray-400'>FitFusion Experiences</a>
           </div>
         </div>
         {/* Right Section: Social Media */}
