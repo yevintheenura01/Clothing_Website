@@ -22,9 +22,10 @@ export default function Footer() {
           {/* Policies */}
           <div className='flex flex-col space-y-2 text-center md:text-left'>
             <h3 className='font-bold text-lg'>Policies</h3>
-            <a href="#" className='text-sm hover:text-gray-400'>Privacy Policy</a>
+            <a href="/privacy" className='text-sm hover:text-gray-400'>Privacy Policy</a>
             <a href="#" className='text-sm hover:text-gray-400'>Purchase Conditions</a>
             <a href="#" className='text-sm hover:text-gray-400'>Cookies Settings</a>
+            <a href="/terms" className='text-sm hover:text-gray-400'>Terms & Conditions</a>
           </div>
           {/* Company */}
           <div className='flex flex-col space-y-2 text-center md:text-left'>
@@ -34,7 +35,7 @@ export default function Footer() {
             <a href="#" className='text-sm hover:text-gray-400'>Offices</a>
             <a href="#" className='text-sm hover:text-gray-400'>Work with Us</a>
             <a href="#" className='text-sm hover:text-gray-400'>Contact</a>
-            <a href="#" className='text-sm hover:text-gray-400'>Legal Notes</a>
+            <a href="/community" className='text-sm hover:text-gray-400'>Community Guidelines</a>
           </div>
           {/* Help */}
           <div className='flex flex-col space-y-2 text-center md:text-left'>
