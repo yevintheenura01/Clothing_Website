@@ -15,7 +15,6 @@ import Fashion from "./components/Fashion/Fashion";
 import VirtualTryOn from "./components/VirtualTryOn/VirtualTryOn";
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import Cart from './components/Cart/Cart';
-import Terms from './components/Privacy/Terms';
 
 // Additional routes (Yevin)
 import Login from './components/Login/Login';  
@@ -28,6 +27,7 @@ import Card from './components/Card/Card';
 import ForgotPassword from './components/ForgotPwd/ForgotPassword';
 import ResetPassword from './components/ForgotPwd/ResetPassword';
 import Wardrobe from './components/Wardrobe/Wardrobe';
+import Terms from './components/Privacy/Terms';
 import Privacy from './components/Privacy/PrivacyPolicy';
 import Community from './components/Privacy/Community';
 
@@ -103,7 +103,6 @@ const App = () => {
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy/>} />
             <Route path="/community" element={<Community />} />
-
           </Routes>
         </ConditionalWrapper>
       </Router>
