@@ -1,8 +1,20 @@
-# React + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React/Vite client for the Clothing Website.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Create `frontend/.env` from `frontend/.env.example` and set:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+Install dependencies and start Vite:
+
+```bash
+npm install
+npm run dev
+```
+
+For full project setup, see the root `README.md`.

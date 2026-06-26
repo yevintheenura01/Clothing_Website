@@ -8,7 +8,7 @@ services:
       - clothing_network
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
-  # Monitor and update containers every 30 secomds for newer build images
+  # Monitor and update containers every 30 seconds for newer build images.
   clothing_backend:
     image: ghcr.io/yevintheenura01/clothing_website_backend:latest
     restart: always
