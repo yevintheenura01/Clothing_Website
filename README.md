@@ -8,13 +8,13 @@ A full-stack clothing and fashion web application with a React/Vite frontend and
   <img src="frontend/src/assets/banner.jpg" alt="Clothing website banner" width="100%" />
 </p>
 
-| Fashion Discovery | Product Styling | Accessories |
+| Landing Page | Footer | Products |
 | --- | --- | --- |
-| <img src="frontend/src/assets/TopImage.jpeg" alt="Fashion hero image" width="260" /> | <img src="frontend/src/assets/dress02.webp" alt="Dress product showcase" width="260" /> | <img src="frontend/src/assets/bag01.avif" alt="Bag product showcase" width="260" /> |
+| <img src="frontend\src\assets\home.png" alt="Fashion hero image" width="260" /> | <img src="frontend\src\assets\footer.png" alt="Dress product showcase" width="260" /> | <img src="frontend\src\assets\products.png" alt="Bag product showcase" width="260" /> |
 
-| Footwear | Beauty Products | Brand |
-| --- | --- | --- |
-| <img src="frontend/src/assets/shoe01.jpg" alt="Shoe product showcase" width="260" /> | <img src="frontend/src/assets/makeup3.webp" alt="Makeup product showcase" width="260" /> | <img src="frontend/src/assets/fitfusion.png" alt="FitFusion brand logo" width="260" /> |
+| wardrobe |  Brand |
+| --- | --- |
+| <img src="frontend\src\assets\wardrobe_read.png" alt="Shoe product showcase" width="260" /> | <img src="frontend/src/assets/fitfusion.png" alt="FitFusion brand logo" width="260" /> |
 
 ## Tech Stack
 
